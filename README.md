@@ -52,7 +52,7 @@
 
 ## Android Edition (Samsung Galaxy S26 Ultra Optimized)
 
-**Android Port & Build Creator:** Sanidhya Verma (@Zero70400)  
+**Android Port & Build Creator:** anomalies_idl (@Zero70400)  
 **Complete Android Feature & User Guide:** [README_ANDROID_USER.md](README_ANDROID_USER.md) · **Android Packaging:** [packaging/android/](packaging/android/)
 
 - **APK Release (`v0.21.0-s26ultra-r2`):** Standalone 100% offline Android APK (`com.tangencylabs.solidcraft`, `versionCode 2102`) with zero-copy streaming of the 92 MB WASM B-rep CAD engine, automatic 19.5:9 QHD+/FHD+ screen-size adaptation (`AutoScreenAdapter` for Landscape, Portrait, Split-Screen, and Samsung DeX), `Preferences → Interface → Scale → Auto` button, S-Pen & multi-touch 3D orbit/pinch-zoom/pan, and native Android file picker + `Downloads` export bridge.
@@ -129,7 +129,7 @@ sponsors its CI minutes.
 ## Credits & Original MIT License
 
 - **Original SolidCraft CAD Engine & Application:** Created by **[Tangency Labs](https://github.com/tangency-labs/solidcraft)**, **B. Herbruck ([`bherbruck`](https://github.com/bherbruck/solidcraft))**, **Karl Von Richter**, and the **SolidCraft Contributors**.
-- **Android Port & Samsung Galaxy S26 Ultra Build (`v0.21.0-s26ultra-r2`):** Built and maintained by **Sanidhya Verma (@Zero70400)**.
+- **Android Port & Samsung Galaxy S26 Ultra Build (`v0.21.0-s26ultra-r2`):** Built and maintained by **anomalies_idl (@Zero70400)**.
 
 Released under the **MIT License** (see [LICENSE](LICENSE) and [LICENSE-MIT](LICENSE-MIT)) / Apache-2.0.
 

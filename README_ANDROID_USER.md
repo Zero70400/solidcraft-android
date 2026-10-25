@@ -1,6 +1,6 @@
 # SolidCraft CAD v0.21.0 — Samsung Galaxy S26 Ultra Android Edition (`r2`)
 
-**Android Port & S26 Ultra Build Creator:** Sanidhya Verma (@Zero70400)  
+**Android Port & S26 Ultra Build Creator:** anomalies_idl (@Zero70400)  
 **Original Upstream Project:** [SolidCraft](https://github.com/tangency-labs/solidcraft) by **Tangency Labs**, **B. Herbruck (`bherbruck`)**, **Karl Von Richter**, and **SolidCraft Contributors**  
 **License:** MIT License (with dual Apache-2.0 option upstream — see [`LICENSE-MIT`](LICENSE-MIT))  
 **Package:** `com.tangencylabs.solidcraft`  
@@ -183,7 +183,7 @@ SolidCraft is a full parametric B-rep 3D CAD system built in Rust (`truck` geome
 
 ### Credits
 - **Original SolidCraft CAD Engine & UI:** Created by **[Tangency Labs](https://github.com/tangency-labs/solidcraft)**, **B. Herbruck ([`bherbruck`](https://github.com/bherbruck/solidcraft))**, **Karl Von Richter**, and the **SolidCraft Contributors**.
-- **Android Port & Samsung Galaxy S26 Ultra Optimization (`v0.21.0-s26ultra-r2`):** Built and maintained by **Sanidhya Verma (@Zero70400)**.
+- **Android Port & Samsung Galaxy S26 Ultra Optimization (`v0.21.0-s26ultra-r2`):** Built and maintained by **anomalies_idl (@Zero70400)**.
 
 ### MIT License
 
@@ -191,7 +191,7 @@ SolidCraft is a full parametric B-rep 3D CAD system built in Rust (`truck` geome
 MIT License
 
 Copyright (c) 2026 SolidCraft contributors
-Copyright (c) 2026 Sanidhya Verma (Android / Samsung Galaxy S26 Ultra Port)
+Copyright (c) 2026 anomalies_idl (Android / Samsung Galaxy S26 Ultra Port)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
