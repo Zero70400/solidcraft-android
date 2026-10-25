@@ -1,0 +1,21 @@
+[
+  {"note":"Configure a body's appearance in the table, apply the edited active row, and render the result."},
+  {"call":"engine.execute","params":{"command":"solid.box","params":{"length":40,"width":20,"height":10,"body_name":"Block"}}},
+  {"call":"engine.execute","params":{"command":"material.assign","params":{"bodies":["Block"],"material":"Steel"}}},
+  {"start":"config.table"},
+  {"widget":"Add Column"},
+  {"widget":"Block (appearance)"},
+  {"expect":{"shown":"Appearance: Block"}},
+  {"widget":"Library"},
+  {"widget":"ABS - Red"},
+  {"widget":"Apply"},
+  {"shot":"configuration_red"},
+  {"expect":{"errors":0,"bodies":1,"query":{"command":"appearance.list","path":["bodies","Block","color"],"value":"#c42828"}}},
+  {"widget":"Library"},
+  {"widget":"Follow material"},
+  {"widget":"Apply"},
+  {"shot":"configuration_default"},
+  {"expect":{"errors":0,"bodies":1,"query":{"command":"appearance.list","path":["bodies","Block"],"value":null}}},
+  {"expect":{"query":{"command":"appearance.list","params":{"body":"Block"},"path":["body","appearance","name"],"value":"Steel"}}},
+  {"expect":{"query":{"command":"config.table","path":["matches"],"value":true}}}
+]

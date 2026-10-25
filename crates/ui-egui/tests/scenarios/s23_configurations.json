@@ -1,0 +1,139 @@
+[
+ {
+  "note": "Configurations: a parameter column (d1) in the configuration table switches the design (config.configure)."
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    20
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.dimension"
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    -8
+   ]
+  }
+ },
+ {
+  "text": "40"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "volume": 8000
+  }
+ },
+ {
+  "start": "config.configure"
+ },
+ {
+  "click": {"handle":"dialog:menu:Add Column"}
+ },
+ {
+  "widget": "d1"
+ },
+ {
+  "click": {"handle":"dialog:table:configuration_table:add"}
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "widget": "40 mm",
+  "near": "Configuration2"
+ },
+ {
+  "key": "A",
+  "cmd": true
+ },
+ {
+  "text": "60 mm"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "click": {
+   "handle": "config:activate:Configuration2"
+  }
+ },
+ {
+  "expect": {
+   "param": {
+    "d1": 60
+   },
+   "volume": 12000,
+   "errors": 0
+  }
+ },
+ {
+  "click": {
+   "handle": "config:activate:Default"
+  }
+ },
+ {
+  "expect": {
+   "param": {
+    "d1": 40
+   },
+   "volume": 8000
+  }
+ },
+ {
+  "shot": "s23_configs"
+ }
+]

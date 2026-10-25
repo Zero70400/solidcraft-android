@@ -1,0 +1,21 @@
+[
+  {"note": "Appearance from the Browser targets its body, filters library names, and removal survives OK and can be undone."},
+  {"call": "engine.execute", "params": {"command": "solid.box", "params": {"length": 30, "width": 20, "height": 10}}},
+  {"call": "engine.execute", "params": {"command": "appearance.assign", "params": {"bodies": ["Body1"], "color": "#abcdef", "appearance": "Tinted glass", "opacity": 0.25}}},
+  {"call": "ui.menu", "params": {"x": 300, "y": 300, "target": {"type": "body", "name": "Body1"}}},
+  {"call": "ui.menuPick", "params": {"item": "Appearance"}},
+  {"expect": {"dialog": "Appearance", "shown": "Remove override"}},
+  {"note": "Collapse the local-library section to keep the built-in appearance search visible in the card."},
+  {"click": {"handle": "dialog:section:Local library"}},
+  {"note": "Let the collapsed library layout settle before resolving the Search handle; retain the basic workspace animation-settling guard without its obsolete scroll coordinates."},
+  {"frames": 20},
+  {"click": {"handle": "appearance:search"}},
+  {"text": "no-such-appearance"},
+  {"expect": {"shown": "No matching appearances"}},
+  {"shot": "appearance_library_search"},
+  {"widget": "Remove override"},
+  {"widget": "OK"},
+  {"expect": {"dialog": null, "query": {"command": "appearance.list", "path": ["bodies"], "value": {}}}},
+  {"call": "engine.execute", "params": {"command": "edit.undo", "params": {}}},
+  {"expect": {"query": {"command": "appearance.list", "path": ["bodies", "Body1", "opacity"], "value": 0.25}}}
+]

@@ -1,0 +1,254 @@
+[
+ {
+  "start": "component.create"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    20
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 100,
+   "y": 170,
+   "target": {
+    "type": "component",
+    "id": 0
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Activate"
+  }
+ },
+ {
+  "start": "component.create"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "call": "ui.set",
+  "params": {
+   "hiddenBodies": [
+    "Body1"
+   ]
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XZ"
+  }
+ },
+ {
+  "call": "ui.set",
+  "params": {
+   "hiddenBodies": []
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    30,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    50,
+    10
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "fit"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "20"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 2,
+   "errors": 0
+  }
+ },
+ {
+  "start": "joint.create"
+ },
+ {
+  "click": {
+   "world": [
+    10,
+    10,
+    10
+   ]
+  }
+ },
+ {
+  "click": {
+   "world": [
+    40,
+    0,
+    5
+   ]
+  }
+ },
+ {
+  "widget": "Rigid"
+ },
+ {
+  "widget": "Revolute"
+ },
+ {
+  "shot": "s07_joint"
+ },
+ {
+  "widget": "OK"
+ },
+ {
+  "expect": {
+   "dialog": null,
+   "errors": 0,
+   "query": {
+    "command": "joint.list",
+    "path": [
+     "joints",
+     0,
+     "type"
+    ],
+    "value": "revolute"
+   }
+  }
+ },
+ {
+  "start": "joint.drive"
+ },
+ {
+  "text": "45"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "dialog": null,
+   "errors": 0,
+   "query": {
+    "command": "joint.list",
+    "path": [
+     "joints",
+     0,
+     "values",
+     0,
+     "value"
+    ],
+    "value": 45
+   }
+  }
+ },
+ {
+  "start": "joint.drive"
+ },
+ {
+  "text": "-30 deg"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "query": {
+    "command": "joint.list",
+    "path": [
+     "joints",
+     0,
+     "values",
+     0,
+     "value"
+    ],
+    "value": -30
+   }
+  }
+ },
+ {
+  "shot": "s26_drive_typed"
+ }
+]

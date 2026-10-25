@@ -1,0 +1,54 @@
+[package]
+name = "solidcraft-engine"
+description = "SolidCraft engine: the session, the command registry (everything is a command), undo/redo and selection"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+default = []
+# Optional authored texture/HDR bytes; the command registry and metadata remain available.
+bundled-render-library = []
+raytrace-cpu = ["solidcraft-render/raytrace-cpu"]
+# Turns on the parameter-contract audit recorder (`SOLIDCRAFT_PARAM_AUDIT`, see
+# `src/schema/record.rs`), for checking a new contract against the whole test suite.
+param-audit = []
+solver-profiling = ["solidcraft-sketch/solver-profiling"]
+
+[[example]]
+name = "sketch_analysis_bench"
+required-features = ["solver-profiling"]
+
+[[example]]
+name = "sketch_drag_bench"
+required-features = ["solver-profiling"]
+
+[[example]]
+name = "sketch_target_bench"
+required-features = ["solver-profiling"]
+
+[dependencies]
+solidcraft-geom = { workspace = true }
+solidcraft-sketch = { workspace = true }
+solidcraft-kernel = { workspace = true }
+solidcraft-doc = { workspace = true }
+solidcraft-io = { workspace = true }
+solidcraft-render = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+schemars = { workspace = true }
+serde_path_to_error = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+web-time = { workspace = true }
+
+[dev-dependencies]
+# Normal CI exercises profiling assertions without enabling the production feature.
+solidcraft-sketch = { workspace = true, features = ["solver-profiling"] }
+
+[[example]]
+name = "render_resource_workflow"
+required-features = ["raytrace-cpu"]

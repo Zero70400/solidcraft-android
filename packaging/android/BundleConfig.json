@@ -1,0 +1,10 @@
+{
+  "compression": {
+    "uncompressedGlob": [
+      "**/*.wasm",
+      "**/*.data",
+      "**/*.png",
+      "**/*.ttf"
+    ]
+  }
+}

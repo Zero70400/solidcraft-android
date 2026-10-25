@@ -1,0 +1,100 @@
+[
+ {
+  "note": "The sketch card stays at the right while editing, including after closing Parameters, and goes with the sketch. Finish Sketch is reached from the Sketch ribbon."
+ },
+ {
+  "expect": {
+   "hidden_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "expect": {
+   "dialog": "Sketch",
+   "hidden_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "expect": {
+   "sketching": true,
+   "dialog": null,
+   "shown_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "expect": {
+   "shown": "Finish Sketch"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "expect": {
+   "shown_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    10
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "parameters.change"
+ },
+ {
+  "click": {"handle": "params:close"}
+ },
+ {"click": {"handle": "tab:SKETCH"}},
+ {
+  "expect": {
+   "shown_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "call": "ui.set",
+  "params": {
+   "dark": false
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": ["sketch_palette:status_header"]
+  }
+ },
+ {
+  "expect": {
+   "shown": "Finish Sketch"
+  }
+ },
+ {
+  "widget": "Finish Sketch"
+ },
+ {
+  "expect": {
+   "sketching": false,
+   "hidden_handles": ["sketch_palette:status_header"]
+  }
+ }
+]

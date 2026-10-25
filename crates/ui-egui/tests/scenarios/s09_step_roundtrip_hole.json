@@ -1,0 +1,121 @@
+[
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    30
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "15"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "volume": 18000
+  }
+ },
+ {
+  "click": {"handle": "appbar:file"}
+ },
+ {
+  "widget": "Export STEP\u2026"
+ },
+ {
+  "expect": {
+   "file": "Untitled.step"
+  }
+ },
+ {
+  "key": "N",
+  "cmd": true
+ },
+ {
+  "expect": {
+   "bodies": 0,
+   "features": 0
+  }
+ },
+ {
+  "choose_file": "Untitled.step"
+ },
+ {
+  "click": {"handle": "appbar:file"}
+ },
+ {
+  "widget": "Insert STEP\u2026"
+ },
+ {"until": {"file_busy": false}},
+ {
+  "debug": 1
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "volume": 18000
+  }
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.hole"
+ },
+ {
+  "click": {
+   "world": [
+    20,
+    15,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "errors": 0,
+   "dialog": null
+  }
+ },
+ {
+  "shot": "s09_hole_on_import"
+ }
+]

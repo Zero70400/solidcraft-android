@@ -1,0 +1,242 @@
+[
+ {
+  "note": "User bug 2 (owner solidcraft-params): with two components, a cut made in the active one leaves the other untouched."
+ },
+ {
+  "start": "component.create"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    10
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    30
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 100,
+   "y": 170,
+   "target": {
+    "type": "component",
+    "id": 0
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Activate"
+  }
+ },
+ {
+  "start": "component.create"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XZ"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    42,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    52,
+    10
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "20"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 2,
+   "body_volume": {
+    "body": "Body1",
+    "volume": 8000
+   }
+  }
+ },
+ {
+  "expect": {
+   "body_volume": {
+    "body": "Body2",
+    "volume": 2000
+   }
+  }
+ },
+ {
+  "note": "Component2 (Body2) is active: cut a slot across both boxes, sketched on XY seen from the top"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "top"
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "expect": {
+   "sketching": true
+  }
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "top"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    30,
+    -15
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    48,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "expect": {
+   "sketch_curves": {
+    "own": 4
+   }
+  }
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "widget": "Join"
+ },
+ {
+  "widget": "Cut"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "body_volume": {
+    "body": "Body1",
+    "volume": 8000
+   }
+  }
+ },
+ {
+  "expect": {
+   "body_volume": {
+    "body": "Body2",
+    "volume": 1100
+   }
+  }
+ },
+ {
+  "shot": "s27_cut"
+ }
+]

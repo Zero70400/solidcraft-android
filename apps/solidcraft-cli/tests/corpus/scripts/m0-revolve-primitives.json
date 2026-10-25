@@ -1,0 +1,11 @@
+{"commands": [
+ {"command": "sketch.create", "params": {"plane": "XZ"}},
+ {"command": "sketch.line", "params": {"points": [[10, 0], [15, 0], [15, 5], [10, 5]], "closed": true}},
+ {"command": "sketch.finish", "params": {}},
+ {"command": "solid.revolve", "params": {"axis": "y"}},
+ {"command": "solid.box", "params": {"length": 10, "width": 10, "height": 10, "corner": [30, 0, 0]}},
+ {"command": "solid.cylinder", "params": {"diameter": 4, "height": 20, "base": [35, 5, -5]}},
+ {"command": "solid.combine", "params": {"target": "Body2", "tools": ["Body3"], "operation": "cut"}},
+ {"command": "solid.chamfer", "params": {"edges": [[30, 5, 10]], "distance": 1}},
+ {"command": "timeline.edit", "params": {"feature": "Revolve1", "set": {"angle": "180 deg"}}}
+]}

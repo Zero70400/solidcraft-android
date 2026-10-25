@@ -1,0 +1,187 @@
+[
+ {
+  "call": "ui.set",
+  "params": {
+   "tab": "MODEL"
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    60,
+    40
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "30"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "volume": 72000
+  }
+ },
+ {
+  "start": "solid.shell"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    20,
+    30
+   ]
+  }
+ },
+ {
+  "text": "2"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "errors": 0,
+   "dialog": null,
+   "volume": [
+    15552,
+    0.0001
+   ]
+  }
+ },
+ {
+  "shot": "s13_shell"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "top"
+  }
+ },
+ {
+  "start": "plastic.boss"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    28,
+    2
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "dialog": null,
+   "volume": [
+    15764.04,
+    0.0001
+   ]
+  }
+ },
+ {
+  "shot": "s13_boss"
+ },
+ {
+  "start": "plastic.lip"
+ },
+ {
+  "click": {
+   "world": [
+    1,
+    20,
+    30
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "dialog": null,
+   "volume": [
+    16334.04,
+    0.0001
+   ]
+  }
+ },
+ {
+  "shot": "s13_lip"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "plastic.snap_fit"
+ },
+ {
+  "click": {
+   "world": [
+    58,
+    20,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "dialog": null,
+   "bodies": 1
+  }
+ },
+ {
+  "shot": "s13_snapfit"
+ }
+]

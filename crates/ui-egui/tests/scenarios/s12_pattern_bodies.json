@@ -1,0 +1,23 @@
+[
+  {"start": "sketch.create"},
+  {"click": {"plane": "XY"}},
+  {"start": "sketch.circle.center"},
+  {"click": {"sketch": [10, 10]}},
+  {"click": {"sketch": [14, 10]}},
+  {"key": "Escape"},
+  {"start": "sketch.finish"},
+  {"call": "ui.view", "params": {"view": "iso"}},
+  {"start": "solid.extrude"},
+  {"text": "8"},
+  {"key": "Enter"},
+  {"expect": {"bodies": 1}},
+  {"start": "solid.pattern.rectangular"},
+  {"click": {"world": [10, 10, 8]}},
+  {"call": "ui.dialogInput", "params": {"index": 1}},
+  {"click": {"axis": "X"}},
+  {"debug": "widgets"},
+  {"key": "Enter"},
+  {"debug": 1},
+  {"expect": {"errors": 0, "dialog": null, "volume": [1206.37, 1e-3]}},
+  {"shot": "s12_pattern"}
+]

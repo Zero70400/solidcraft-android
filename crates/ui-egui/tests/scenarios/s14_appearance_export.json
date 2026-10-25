@@ -1,0 +1,122 @@
+[
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    30,
+    20
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "click": {
+   "world": [
+    15,
+    10,
+    10
+   ]
+  }
+ },
+ {
+  "key": "A"
+ },
+ {
+  "expect": {
+   "dialog": "Appearance"
+  }
+ },
+ {
+  "shot": "s14_appearance"
+ },
+ {
+  "widget": "OK"
+ },
+ {
+  "expect": {
+   "dialog": null,
+   "errors": 0
+  }
+ },
+ {
+  "click": {"handle": "appbar:file"}
+ },
+ {
+  "widget": "Export STEP\u2026"
+ },
+ {
+  "expect": {
+   "file": "Untitled.step",
+   "file_contains": {
+    "file": "Untitled.step",
+    "text": "COLOUR_RGB('',0.7686"
+   }
+  }
+ },
+ {
+  "click": {"handle": "appbar:file"}
+ },
+ {
+  "widget": "Export STL\u2026"
+ },
+ {
+  "expect": {
+   "dialog": "SaveMesh"
+  }
+ },
+ {
+  "click": {
+   "world": [
+    15,
+    10,
+    10
+   ]
+  }
+ },
+ {
+  "widget": "Save"
+ },
+ {
+  "expect": {
+   "file": "Body1.stl"
+  }
+ }
+]

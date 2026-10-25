@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SolidCraft</title>
+  <meta name="description" content="Open-source parametric CAD built in Rust. Desktop, browser, Android S26 Ultra, and MCP for AI agents.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SolidCraft">
+  <meta property="og:title" content="SolidCraft: try it in your browser">
+  <meta property="og:description" content="Open-source parametric CAD built in Rust. Desktop, browser, and MCP for AI agents.">
+  <meta property="og:url" content="https://solidcraft.ai/">
+  <meta property="og:image" content="https://docs.solidcraft.io/og.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="SolidCraft: open-source parametric CAD built in Rust">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SolidCraft: try it in your browser">
+  <meta name="twitter:description" content="Open-source parametric CAD built in Rust. Desktop, browser, and MCP for AI agents.">
+  <meta name="twitter:image" content="https://docs.solidcraft.io/og.png">
+  <meta name="twitter:image:alt" content="SolidCraft: open-source parametric CAD built in Rust">
+  <link data-trunk rel="rust" data-bin="solidcraft-web" data-wasm-opt="0" data-weak-refs />
+  <link data-trunk rel="copy-file" href="../../assets/fonts/biz-udp-gothic/BIZUDPGothic-Regular.ttf" data-target-path="fonts" />
+  <link data-trunk rel="copy-file" href="../../assets/fonts/biz-udp-gothic/OFL.txt" data-target-path="fonts" />
+  <link data-trunk rel="css" href="../../assets/styles/web/loading.css" />
+  <link data-trunk rel="copy-file" href="../../assets/styles/web/loading-logo.svg" />
+  <meta name="theme-color" content="#343840">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/32x32/ai.storyteller.solidcraft.png">
+  <link rel="apple-touch-icon" href="icons/256x256/ai.storyteller.solidcraft.png">
+  <link data-trunk rel="copy-file" href="manifest.webmanifest" />
+  <link data-trunk rel="copy-file" href="../../assets/icons/app/linux/exports/hicolor/32x32/apps/ai.storyteller.solidcraft.png" data-target-path="icons/32x32" />
+  <link data-trunk rel="copy-file" href="../../assets/icons/app/linux/exports/hicolor/256x256/apps/ai.storyteller.solidcraft.png" data-target-path="icons/256x256" />
+  <link data-trunk rel="copy-file" href="../../assets/icons/app/linux/exports/hicolor/512x512/apps/ai.storyteller.solidcraft.png" data-target-path="icons/512x512" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100dvh;
+      overflow: hidden;
+      background: #1e2024;
+      touch-action: none;
+      overscroll-behavior: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    #solidcraft_canvas {
+      display: block;
+      width: 100vw !important;
+      height: 100dvh !important;
+      touch-action: none;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="solidcraft_canvas"></canvas>
+  <div id="solidcraft_loading" role="status"><img src="loading-logo.svg" alt=""><span class="sr-only">Loading SolidCraft&hellip;</span></div>
+  <script>
+    // Ensure no stale ServiceWorker intercepts requests or triggers net::ERR_CACHE_MISS in Android WebView.
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then((regs) => {
+        for (const r of regs) {
+          r.unregister().catch(() => {});
+        }
+      }).catch(() => {});
+    }
+
+    addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); window.solidcraftInstall = e; });
+    addEventListener("appinstalled", () => { window.solidcraftInstall = null; });
+
+    // Android APK Native Download Bridge for blob: exports (.stl, .step, .3mf, .dxf, .svg, .solidcraft)
+    (function() {
+      // Fix eframe ResizeObserver DPI mismatch on mobile WebViews & high-DPI displays (S26 Ultra)
+      // and keep WebGL2/WebGPU framebuffer within 2048px downlevel texture limits.
+      try {
+        if (typeof ResizeObserverEntry !== 'undefined' && ResizeObserverEntry.prototype) {
+          delete ResizeObserverEntry.prototype.devicePixelContentBoxSize;
+        }
+        var rawDpr = window.devicePixelRatio || 1;
+        Object.defineProperty(window, 'devicePixelRatio', {
+          get: function() {
+            var m = Math.max(window.innerWidth || 848, window.innerHeight || 848, 1);
+            var cap = Math.floor((2040 / m) * 100) / 100;
+            return Math.max(1, Math.min(rawDpr, cap));
+          },
+          configurable: true
+        });
+      } catch (e) {}
+      const origClick = HTMLAnchorElement.prototype.click;
+      HTMLAnchorElement.prototype.click = function() {
+        if (window.SolidCraftAndroid && typeof window.SolidCraftAndroid.saveDownloadedFile === "function" && this.href && this.href.startsWith("blob:")) {
+          const fileName = this.download || "design.solidcraft";
+          const blobUrl = this.href;
+          fetch(blobUrl)
+            .then((r) => r.blob())
+            .then((blob) => {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                const res = String(reader.result || "");
+                const idx = res.indexOf(",");
+                const b64 = idx >= 0 ? res.slice(idx + 1) : res;
+                window.SolidCraftAndroid.saveDownloadedFile(fileName, b64);
+              };
+              reader.readAsDataURL(blob);
+            })
+            .catch(() => origClick.apply(this, arguments));
+          return;
+        }
+        return origClick.apply(this, arguments);
+      };
+    })();
+
+    // Multi-Touch Gesture Bridge for Samsung Galaxy S26 Ultra (2-finger pinch zoom & 2-finger pan)
+    (function() {
+      const canvas = document.getElementById("solidcraft_canvas");
+      if (!canvas) return;
+      let twoFingerActive = false;
+      let prevMidX = 0;
+      let prevMidY = 0;
+      let prevDist = 0;
+
+      function touchMetrics(t0, t1) {
+        const mx = (t0.clientX + t1.clientX) * 0.5;
+        const my = (t0.clientY + t1.clientY) * 0.5;
+        const dx = t1.clientX - t0.clientX;
+        const dy = t1.clientY - t0.clientY;
+        return { mx, my, dist: Math.hypot(dx, dy) };
+      }
+
+      canvas.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+          twoFingerActive = true;
+          const m = touchMetrics(e.touches[0], e.touches[1]);
+          prevMidX = m.mx;
+          prevMidY = m.my;
+          prevDist = m.dist;
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      canvas.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2 && twoFingerActive) {
+          const m = touchMetrics(e.touches[0], e.touches[1]);
+          const dx = m.mx - prevMidX;
+          const dy = m.my - prevMidY;
+          const dDist = m.dist - prevDist;
+          prevMidX = m.mx;
+          prevMidY = m.my;
+          prevDist = m.dist;
+
+          if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
+            const panX = Math.abs(dx) < 0.01 ? 0.01 : -dx;
+            canvas.dispatchEvent(new WheelEvent("wheel", {
+              deltaMode: 0,
+              deltaX: panX,
+              deltaY: -dy,
+              ctrlKey: false,
+              clientX: m.mx,
+              clientY: m.my,
+              bubbles: true,
+              cancelable: true
+            }));
+          }
+          if (Math.abs(dDist) > 0.4) {
+            canvas.dispatchEvent(new WheelEvent("wheel", {
+              deltaMode: 0,
+              deltaX: 0,
+              deltaY: -dDist * 2.0,
+              ctrlKey: true,
+              clientX: m.mx,
+              clientY: m.my,
+              bubbles: true,
+              cancelable: true
+            }));
+          }
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      const endTwoFinger = (e) => {
+        if (e.touches.length < 2) {
+          twoFingerActive = false;
+        }
+      };
+      canvas.addEventListener("touchend", endTwoFinger, { passive: true });
+      canvas.addEventListener("touchcancel", endTwoFinger, { passive: true });
+    })();
+  </script>
+</body>
+</html>

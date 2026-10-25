@@ -1,0 +1,419 @@
+[
+ {
+  "note": "#323: every pinned command gets a toolbar button, with no fixed cap. Ten commands pinned to MODEL > CREATE all show as buttons at a wide window; at a narrower one the panel keeps the buttons that fit and its drop-down lists the rest (#2108), then it moves into the » menu, and none is dropped."
+ },
+ {
+  "call": "ui.resize",
+  "params": {
+   "width": 2000,
+   "height": 1000
+  }
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ]
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.box"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.cylinder"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.sphere"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.torus"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.coil"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.loft"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.rib"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.sweep"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.pipe"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 300,
+   "y": 60,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.thread"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "handle_order": [
+    "button:solid.extrude",
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "count": {
+    "name": "toolbar_collapsed",
+    "value": 0
+   }
+  }
+ },
+ {
+  "note": "A narrower window: CREATE keeps its first buttons and hands the rest to its drop-down, which lists every pinned command (#2108)."
+ },
+ {
+  "call": "ui.resize",
+  "params": {
+   "width": 900,
+   "height": 800
+  }
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "shown_handles": [
+    "button:solid.extrude",
+    "panel:MODEL:CREATE"
+   ]
+  }
+ },
+ {
+  "click": {
+   "handle": "panel:MODEL:CREATE"
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "dropdown:solid.box",
+    "dropdown:solid.cylinder",
+    "dropdown:solid.sphere",
+    "dropdown:solid.torus",
+    "dropdown:solid.coil",
+    "dropdown:solid.loft",
+    "dropdown:solid.rib",
+    "dropdown:solid.sweep",
+    "dropdown:solid.pipe",
+    "dropdown:solid.thread"
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "dropdown:solid.box",
+    "dropdown:solid.cylinder",
+    "dropdown:solid.sphere",
+    "dropdown:solid.torus",
+    "dropdown:solid.coil",
+    "dropdown:solid.loft",
+    "dropdown:solid.rib",
+    "dropdown:solid.sweep",
+    "dropdown:solid.pipe",
+    "dropdown:solid.thread"
+   ]
+  }
+ },
+ {
+  "note": "Narrower still: the panels move into the » menu, and CREATE's submenu has every command."
+ },
+ {
+  "call": "ui.resize",
+  "params": {
+   "width": 200,
+   "height": 800
+  }
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "panel:MODEL:CREATE",
+    "collapsed:MODEL:CREATE",
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "shown_handles": [
+    "toolbar:overflow"
+   ]
+  }
+ },
+ {
+  "click": {
+   "handle": "toolbar:overflow"
+  }
+ },
+ {
+  "widget": "CREATE"
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "toolbar:solid.box",
+    "toolbar:solid.cylinder",
+    "toolbar:solid.sphere",
+    "toolbar:solid.torus",
+    "toolbar:solid.coil",
+    "toolbar:solid.loft",
+    "toolbar:solid.rib",
+    "toolbar:solid.sweep",
+    "toolbar:solid.pipe",
+    "toolbar:solid.thread"
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "note": "Wide again: all ten buttons are back; Reset Toolbar puts the defaults back."
+ },
+ {
+  "call": "ui.resize",
+  "params": {
+   "width": 2000,
+   "height": 1000
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "count": {
+    "name": "toolbar_more",
+    "value": 0
+   }
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 1900,
+   "y": 60,
+   "target": {
+    "type": "toolbar"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Reset Toolbar"
+  }
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "button:solid.box",
+    "button:solid.cylinder",
+    "button:solid.sphere",
+    "button:solid.torus",
+    "button:solid.coil",
+    "button:solid.loft",
+    "button:solid.rib",
+    "button:solid.sweep",
+    "button:solid.pipe",
+    "button:solid.thread"
+   ],
+   "shown_handles": [
+    "button:solid.extrude"
+   ]
+  }
+ }
+]

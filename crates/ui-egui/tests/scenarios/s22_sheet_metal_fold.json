@@ -1,0 +1,165 @@
+[
+ {
+  "note": "Target: sheet metal plate folded along a sketch line (sheet.fold, solidcraft-params; dialog by solidcraft-dialogs). Adjust the dialog steps when it lands."
+ },
+ {
+  "call": "ui.set",
+  "params": {
+   "tab": "SHEET METAL"
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    60,
+    40
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "sheet.flange"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    20,
+    0
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "volume": 6000
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    20,
+    2.5
+   ]
+  }
+ },
+ {
+  "note": "A flat face of a sheet attaches the sketch to its panel (by name), in the flat pattern's coordinates."
+ },
+ {
+  "expect": {
+   "sketching": true,
+   "query": {
+    "command": "sketch.inspect",
+    "path": ["plane", "origin", 2],
+    "value": 2.5
+   }
+  }
+ },
+ {
+  "start": "sketch.line"
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    -5
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    45
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "start": "sheet.fold"
+ },
+ {
+  "click": {
+   "world": [
+    40,
+    20,
+    2.5
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "errors": 0,
+   "dialog": null,
+   "volume": [
+    6023.5,
+    0.001
+   ]
+  },
+  "note": "the bend keeps the neutral layer (K 0.44): the bend zone holds \u03b8\u00b7T\u00b7(T/2 \u2212 K\u00b7T)\u00b7w = 23.6 mm\u00b3 more than the flat strip it replaces"
+ },
+ {
+  "shot": "s22_folded"
+ },
+ {
+  "start": "sheet.flat_pattern"
+ },
+ {
+  "widget": "Export DXF\u2026"
+ },
+ {
+  "expect": {
+   "file": "Untitled-Body1.dxf"
+  }
+ }
+]

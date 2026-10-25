@@ -1,0 +1,124 @@
+[
+ {
+  "call": "ui.set",
+  "params": {
+   "tab": "SHEET METAL"
+  }
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    60,
+    40
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "sheet.flange"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    20,
+    0
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "errors": 0,
+   "dialog": null
+  }
+ },
+ {
+  "expect": {
+   "volume": 6000
+  }
+ },
+ {
+  "shot": "s08_base"
+ },
+ {
+  "start": "sheet.flange"
+ },
+ {
+  "click": {
+   "world": [
+    30,
+    0,
+    2.5
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "bodies": 1,
+   "errors": 0,
+   "dialog": null
+  }
+ },
+ {
+  "shot": "s08_flange"
+ },
+ {
+  "start": "sheet.flat_pattern"
+ },
+ {
+  "widget": "Export DXF\u2026"
+ },
+ {
+  "expect": {
+   "file": "Untitled-Body1.dxf"
+  }
+ },
+ {
+  "widget": "Export Bend Table\u2026"
+ },
+ {
+  "expect": {
+   "file": "Untitled-Body1.csv"
+  }
+ },
+ {
+  "shot": "s08_flat"
+ }
+]

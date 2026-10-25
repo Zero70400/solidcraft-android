@@ -1,0 +1,141 @@
+[
+ {
+  "note": "User bug 1 (owner solidcraft-sketch): Create Sketch on a body face projects the face's loops as reference geometry (linked), with no big square of real lines, and the face stays pickable for Project."
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    30
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "15"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "world": [
+    20,
+    15,
+    15
+   ]
+  }
+ },
+ {
+  "expect": {
+   "sketching": true
+  }
+ },
+ {
+  "expect": {
+   "sketch_curves": {
+    "linked": 4,
+    "own": 0
+   }
+  }
+ },
+ {
+  "shot": "s26_face_sketch"
+ },
+ {
+  "start": "sketch.project"
+ },
+ {
+  "click": {
+   "world": [
+    5,
+    5,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "expect": {
+   "sketch_curves": {
+    "linked": 8,
+    "own": 0
+   }
+  }
+ },
+ {
+  "start": "sketch.circle.center"
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    15
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    25,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "expect": {
+   "sketch_curves": {
+    "own": 1
+   }
+  }
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "expect": {
+   "errors": 0
+  }
+ }
+]

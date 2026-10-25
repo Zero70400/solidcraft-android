@@ -1,0 +1,213 @@
+[
+ {
+  "note": "Moving a component with the Browser's Move shortcut carries its sketches, and a sketch on a body face follows the body (#3580)."
+ },
+ {
+  "start": "component.create"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    30,
+    20
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "world": [
+    15,
+    10,
+    10
+   ]
+  }
+ },
+ {
+  "start": "sketch.circle.center"
+ },
+ {
+  "click": {
+   "sketch": [
+    15,
+    10
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    18,
+    10
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "expect": {
+   "sketch_world": {
+    "sketch": "Sketch2",
+    "point": "c1.center",
+    "at": [
+     15,
+     10,
+     10
+    ]
+   }
+  }
+ },
+ {
+  "expect": {
+   "sketch_world": {
+    "sketch": "Sketch1",
+    "point": "p1",
+    "at": [
+     0,
+     0,
+     0
+    ]
+   }
+  }
+ },
+ {
+  "note": "The design's first part is made grounded (#2804): free it before moving it."
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 100,
+   "y": 170,
+   "target": {
+    "type": "component",
+    "id": 1
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Unground"
+  }
+ },
+ {
+  "click": {
+   "handle": "row:occurrence:2"
+  }
+ },
+ {
+  "key": "M"
+ },
+ {
+  "widget": "0.00 mm",
+  "near": "X distance"
+ },
+ {
+  "key": "A",
+  "cmd": true
+ },
+ {
+  "text": "50"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "widget": "Capture All Positions"
+ },
+ {
+  "expect": {
+   "bbox": {
+    "body": "Body1",
+    "min": [
+     50,
+     0,
+     0
+    ],
+    "max": [
+     80,
+     20,
+     10
+    ]
+   }
+  }
+ },
+ {
+  "expect": {
+   "sketch_world": {
+    "sketch": "Sketch1",
+    "point": "p1",
+    "at": [
+     50,
+     0,
+     0
+    ]
+   }
+  }
+ },
+ {
+  "expect": {
+   "sketch_world": {
+    "sketch": "Sketch2",
+    "point": "c1.center",
+    "at": [
+     65,
+     10,
+     10
+    ]
+   }
+  }
+ },
+ {
+  "shot": "s29_moved"
+ }
+]

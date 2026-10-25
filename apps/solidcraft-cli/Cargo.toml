@@ -1,0 +1,36 @@
+[package]
+name = "solidcraft-cli"
+description = "SolidCraft headless CLI: run command scripts, measure, export, render snapshots, replay oracle recipes"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+default-run = "solidcraft-cli"
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "solidcraft-cli"
+path = "src/main.rs"
+
+# Compatibility alias for the CLI's former name: forwards to solidcraft-cli with a deprecation
+# note on stderr. Shipped in every package for at least one release.
+[[bin]]
+name = "solvecraft-cli"
+path = "src/alias.rs"
+
+[features]
+default = ["raytrace-cpu"]
+bundled-render-library = ["solidcraft-engine/bundled-render-library"]
+raytrace-cpu = ["solidcraft-engine/raytrace-cpu"]
+
+[dependencies]
+solidcraft-engine = { workspace = true }
+solidcraft-gpu = { workspace = true }
+solidcraft-mcp = { workspace = true }
+log = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+# Snapshot tests decode the pictures to compare them with a tolerance.
+image = { workspace = true }

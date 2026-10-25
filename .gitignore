@@ -1,0 +1,22 @@
+/target*/
+/plan/
+/dist/
+*~
+.DS_Store
+*.swp
+/.claude/worktrees/
+/target-snapshot
+__pycache__/
+.vscode/
+
+# cargo-mutants output (docs/mutation-testing.md)
+mutants.out*/
+
+# Android build intermediates & release keystores
+/build/
+/packaging/android/build_tmp/
+/packaging/android/build_playstore_tmp/
+/packaging/android/assets/
+/packaging/android/lib/
+/packaging/android/*.jks
+/packaging/android/*.keystore

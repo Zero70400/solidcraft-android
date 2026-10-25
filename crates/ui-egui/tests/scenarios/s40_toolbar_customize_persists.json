@@ -1,0 +1,124 @@
+[
+ {
+  "note": "Toolbar customization survives a restart: Pin to Toolbar, Remove from Toolbar, drag to reorder. Toolbar buttons publish handles `toolbar:<command id>`. The workspace switcher spans the toolbar's height."
+ },
+ {
+  "expect": {
+   "spans": {
+    "inner": "workspace_switcher",
+    "outer": "toolbar",
+    "axis": "y",
+    "tol": 6
+   }
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "toolbar:solid.extrude",
+    "toolbar:solid.revolve"
+   ],
+   "hidden_handles": [
+    "toolbar:solid.draft"
+   ]
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 400,
+   "y": 80,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.draft"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Pin to Toolbar"
+  }
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "toolbar:solid.draft"
+   ]
+  }
+ },
+ {
+  "call": "ui.menu",
+  "params": {
+   "x": 400,
+   "y": 80,
+   "target": {
+    "type": "toolbar_command",
+    "id": "solid.revolve"
+   }
+  }
+ },
+ {
+  "call": "ui.menuPick",
+  "params": {
+   "item": "Remove from Toolbar"
+  }
+ },
+ {
+  "expect": {
+   "hidden_handles": [
+    "toolbar:solid.revolve"
+   ]
+  }
+ },
+ {
+  "drag": [
+   {
+    "handle": "toolbar:solid.draft"
+   },
+   {
+    "handle": "toolbar:solid.extrude"
+   }
+  ],
+  "steps": 12
+ },
+ {
+  "expect": {
+   "handle_order": [
+    "toolbar:solid.draft",
+    "toolbar:solid.extrude"
+   ]
+  }
+ },
+ {
+  "restart": "close"
+ },
+ {
+  "expect": {
+   "shown_handles": [
+    "toolbar:solid.draft"
+   ],
+   "hidden_handles": [
+    "toolbar:solid.revolve"
+   ]
+  }
+ },
+ {
+  "expect": {
+   "handle_order": [
+    "toolbar:solid.draft",
+    "toolbar:solid.extrude"
+   ]
+  }
+ },
+ {
+  "expect": {
+   "spans": {
+    "inner": "workspace_switcher",
+    "outer": "toolbar",
+    "axis": "y",
+    "tol": 6
+   }
+  }
+ }
+]

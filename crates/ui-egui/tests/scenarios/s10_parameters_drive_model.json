@@ -1,0 +1,112 @@
+[
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    40,
+    30
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.dimension"
+ },
+ {
+  "click": {
+   "sketch": [
+    20,
+    0
+   ]
+  }
+ },
+ {"click": {"sketch": [20, -8]}},
+ {
+  "text": "40"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "10"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "volume": 12000
+  }
+ },
+ {
+  "start": "parameters.change"
+ },
+ {
+  "shot": "s10_params"
+ },
+ {
+  "widget": "40"
+ },
+ {
+  "key": "A",
+  "cmd": true
+ },
+ {
+  "text": "55"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "debug": 1
+ },
+ {
+  "expect": {
+   "param": {
+    "d1": 55
+   },
+   "volume": 16500,
+   "errors": 0
+  }
+ },
+ {
+  "click": {"handle": "params:close"}
+ },
+ {
+  "expect": {
+   "dialog": null
+  }
+ },
+ {
+  "shot": "s10_updated"
+ }
+]

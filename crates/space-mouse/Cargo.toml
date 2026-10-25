@@ -1,0 +1,13 @@
+[package]
+name = "solidcraft-space-mouse"
+description = "SolidCraft 3D mouse input: HID report descriptors and reports, independent of the device API and the UI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+# Saving a calibration with the app's preferences; off by default, so the crate needs nothing.
+serde = { workspace = true, optional = true }

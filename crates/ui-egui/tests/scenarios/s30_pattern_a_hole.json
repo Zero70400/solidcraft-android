@@ -1,0 +1,141 @@
+[
+ {
+  "note": "Pattern a hole (Object Type: Features), the beginner workflow box \u2192 hole \u2192 pattern."
+ },
+ {
+  "start": "sketch.create"
+ },
+ {
+  "click": {
+   "plane": "XY"
+  }
+ },
+ {
+  "start": "sketch.rectangle.two_point"
+ },
+ {
+  "click": {
+   "sketch": [
+    0,
+    0
+   ]
+  }
+ },
+ {
+  "click": {
+   "sketch": [
+    50,
+    25
+   ]
+  }
+ },
+ {
+  "key": "Escape"
+ },
+ {
+  "start": "sketch.finish"
+ },
+ {
+  "call": "ui.view",
+  "params": {
+   "view": "iso"
+  }
+ },
+ {
+  "start": "solid.extrude"
+ },
+ {
+  "text": "15"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "volume": 18750
+  }
+ },
+ {
+  "start": "solid.hole"
+ },
+ {
+  "click": {
+   "world": [
+    10,
+    12,
+    15
+   ]
+  }
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "dialog": null
+  }
+ },
+ {
+  "expect": {
+   "volume": [
+    18543.855,
+    1e-05
+   ]
+  }
+ },
+ {
+  "start": "solid.pattern.rectangular"
+ },
+ {
+  "widget": "Bodies"
+ },
+ {
+  "widget": "Features"
+ },
+ {
+  "click": {
+   "handle": "timeline:Hole1"
+  }
+ },
+ {
+  "call": "ui.dialogInput",
+  "params": {
+   "index": 1
+  }
+ },
+ {
+  "click": {
+   "axis": "X"
+  }
+ },
+ {
+  "click": {"handle": "dialog:Spacing"}
+ },
+ {
+  "key": "A",
+  "cmd": true
+ },
+ {
+  "text": "15 mm"
+ },
+ {
+  "key": "Tab"
+ },
+ {
+  "key": "Enter"
+ },
+ {
+  "expect": {
+   "errors": 0,
+   "dialog": null,
+   "volume": [
+    18131.58,
+    0.0001
+   ]
+  }
+ },
+ {
+  "shot": "s30_pattern"
+ }
+]

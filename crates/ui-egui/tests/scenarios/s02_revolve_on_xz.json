@@ -1,0 +1,18 @@
+[
+  {"start": "sketch.create"},
+  {"click": {"plane": "XZ"}},
+  {"expect": {"sketching": true}},
+  {"start": "sketch.rectangle.two_point"},
+  {"click": {"sketch": [10, 0]}},
+  {"click": {"sketch": [20, 30]}},
+  {"key": "Escape"},
+  {"shot": "s02_sketch"},
+  {"start": "sketch.finish"},
+  {"call": "ui.view", "params": {"view": "iso"}},
+  {"start": "solid.revolve"},
+  {"click": {"axis": "Z"}},
+  {"debug": 1},
+  {"key": "Enter"},
+  {"expect": {"bodies": 1, "errors": 0, "dialog": null, "volume": [28274.33, 1e-3]}},
+  {"shot": "s02_revolve"}
+]
